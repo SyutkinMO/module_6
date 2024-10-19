@@ -1,35 +1,34 @@
-#-----------Множественное наследование-----------
+# -----------Множественное наследование-----------
 
 class Horse:
-
     x_distance = 0
     sound = "Frrr"
 
-    def run (self, dx):
-        self.x_distance = self.x_distance + dx
+    def run(self, dx):
+        self.x_distance += dx
         return self.x_distance
 
-class Eagle:
 
+class Eagle:
     y_distance = 0
     sound = 'I train, eat, sleep, and repeat'
 
-    def fly (self, dy):
-        self.y_distance = self.y_distance + dy
+    def fly(self, dy):
+        self.y_distance += dy
         return self.y_distance
 
 
-class Pegasus (Eagle, Horse):
+class Pegasus(Eagle, Horse):
     def __init__(self):
         super().__init__()
-
 
     def move(self, dx, dy):
         super().run(dx)
         super().fly(dy)
 
     def get_pos(self):
-        return (self.x_distance, self.y_distance) # Обратить внимание, что возвращенные атрибуты стали принадлежать классу Pegasus
+        return (self.x_distance,
+                self.y_distance)  # Обратить внимание, что возвращенные атрибуты стали принадлежать классу Pegasus
 
     def voice(self):
         print(super().sound)
